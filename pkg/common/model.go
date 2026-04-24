@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type BaseModel struct {
+type UUID struct {
 	ID string `gorm:"primaryKey;type:uuid;default:uuid_generate_v4()" json:"id"`
 }
 
