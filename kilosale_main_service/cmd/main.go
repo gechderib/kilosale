@@ -1,20 +1,23 @@
 package main
 
 import (
-	"fmt"
-	"time"
+	config "kilosale_main/config"
 )
 
 func main() {
-	fmt.Println("Hello, World!")
-	time.Sleep(10 * time.Second)
+	// Load environment variables
+	config.LoadConfig()
 
-	ch := make(chan string)
+	// // Initialize database connection
+	// db := database.DBInit()
+	// defer db.Close()
 
-	go func() {
-		ch <- "Hello from goroutine!"
-	}()
+	// // Initialize repositories
+	// userRepo := userRepo.NewUserRepository(db)
 
-	message := <-ch
-	fmt.Println(message)
+	// // Initialize services
+	// userService := userService.NewUserService(userRepo)
+
+	// // Initialize handlers
+	// userHandler := userHandler.NewUserHandler(userService)
 }

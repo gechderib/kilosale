@@ -1,4 +1,4 @@
-package user
+package repository
 
 import (
 	models "kilosale_main/internal/models/user"

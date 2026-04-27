@@ -12,12 +12,9 @@ func DatabaseInit(host string, port int, user string, password string, dbname st
 
 	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		log.Fatalf("Failed to connect to database: %v", err)
-	}
 
 	if err != nil {
-		log.Fatalf("Failed to auto-migrate database: %v", err)
+		log.Fatalf("Failed to connect to database: %v", err)
 	}
 
 	return db
