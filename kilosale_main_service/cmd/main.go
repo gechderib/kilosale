@@ -1,23 +1,45 @@
 package main
 
 import (
-	config "kilosale_main/config"
+	"kilosale_main/config"
+	"net/http"
+
+	"github.com/gechderib/kilosale/pkg/database"
+	"github.com/go-chi/chi/v5"
+
+	userHandler "kilosale_main/internal/handlers/user"
+	userRepo "kilosale_main/internal/repositories/user"
+	userService "kilosale_main/internal/services/user"
 )
 
 func main() {
 	// Load environment variables
-	config.LoadConfig()
+	cfg := config.LoadConfig()
 
 	// // Initialize database connection
-	// db := database.DBInit()
-	// defer db.Close()
+	db := database.DatabaseInit(cfg.DB_HOST, cfg.DB_PORT, cfg.DB_USER, cfg.DB_PASSWORD, cfg.DB_NAME)
 
 	// // Initialize repositories
-	// userRepo := userRepo.NewUserRepository(db)
+	repo := userRepo.NewUserRepository(db)
 
 	// // Initialize services
-	// userService := userService.NewUserService(userRepo)
+	service := userService.NewUserService(repo)
 
 	// // Initialize handlers
-	// userHandler := userHandler.NewUserHandler(userService)
+	handler := userHandler.NewUserHandler(service)
+
+	// chi router
+	r := chi.NewRouter()
+
+	r.Route(
+		"/api/v1", func(r chi.Router) {
+			r.Group(func(r chi.Router) {
+				r.Post("/", handler.CreateUser)
+				r.Get("/{id}", handler.GetByID)
+			})
+		},
+	)
+	r.HandleFunc("/users", handler.CreateUser)
+
+	http.ListenAndServe(":8080", r)
 }

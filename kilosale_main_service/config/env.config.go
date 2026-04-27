@@ -7,13 +7,23 @@ import (
 )
 
 type Config struct {
-	Port string
+	PORT        string
+	DB_HOST     string
+	DB_PORT     string
+	DB_USER     string
+	DB_PASSWORD string
+	DB_NAME     string
 }
 
 func LoadConfig() *Config {
 	godotenv.Load()
 	return &Config{
-		Port: getEnv("PORT", "8080"),
+		PORT:        getEnv("PORT", "8080"),
+		DB_HOST:     getEnv("DB_HOST", "localhost"),
+		DB_PORT:     getEnv("DB_PORT", "5432"),
+		DB_USER:     getEnv("DB_USER", "postgres"),
+		DB_PASSWORD: getEnv("DB_PASSWORD", "password"),
+		DB_NAME:     getEnv("DB_NAME", "kilosale"),
 	}
 }
 

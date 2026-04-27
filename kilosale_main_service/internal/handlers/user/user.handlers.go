@@ -1,10 +1,12 @@
-package handlers
+package handler
 
 import (
 	"encoding/json"
 	models "kilosale_main/internal/models/user"
 	service "kilosale_main/internal/services/user"
 	"net/http"
+
+	"github.com/go-chi/chi/v5"
 )
 
 type userHandler struct {
@@ -33,4 +35,17 @@ func (h *userHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(user)
 
+}
+
+func (h *userHandler) GetByID(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
+
+	user, err := h.userService.GetByID(id)
+	if err != nil {
+		http.Error(w, "User not found", http.StatusNotFound)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(user)
 }
