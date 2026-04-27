@@ -2,7 +2,7 @@ FROM golang:alpine AS builder
 
 WORKDIR /app
 
-COPY go.mod ./
+COPY go.mod go.sum ./
 
 RUN go mod download
 
@@ -16,6 +16,6 @@ WORKDIR /root/
 
 COPY --from=builder /app/kilosale_main_service .
 
-EXPOSE 8081
+EXPOSE 8080
 
 CMD ["./kilosale_main_service"]

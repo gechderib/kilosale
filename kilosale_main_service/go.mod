@@ -20,4 +20,4 @@ require (
 	gorm.io/gorm v1.31.1 // indirect
 )
 
-replace github.com/gechderib/kilosale/pkg v0.1.0 => ../pkg
+// replace github.com/gechderib/kilosale/pkg v0.1.0 => ../pkg

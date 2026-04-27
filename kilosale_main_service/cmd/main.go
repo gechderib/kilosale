@@ -17,7 +17,7 @@ func main() {
 	cfg := config.LoadConfig()
 
 	// // Initialize database connection
-	db := database.DatabaseInit(cfg.DB_HOST, cfg.DB_PORT, cfg.DB_USER, cfg.DB_PASSWORD, cfg.DB_NAME)
+	db := database.DatabaseInit(cfg.DB_HOST, cfg.DB_PORT, cfg.DB_USER, cfg.DB_PASSWORD, cfg.DB_NAME_MAIN)
 
 	// // Initialize repositories
 	repo := userRepo.NewUserRepository(db)
@@ -41,5 +41,5 @@ func main() {
 	)
 	r.HandleFunc("/users", handler.CreateUser)
 
-	http.ListenAndServe(":8080", r)
+	http.ListenAndServe(":${cfg.PORT}", r)
 }
