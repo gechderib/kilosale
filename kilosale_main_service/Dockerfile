@@ -16,6 +16,6 @@ WORKDIR /root/
 
 COPY --from=builder /app/kilosale_main_service .
 
-EXPOSE 8080
+EXPOSE 8083
 
 CMD ["./kilosale_main_service"]

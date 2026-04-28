@@ -2,7 +2,7 @@
 
 services:
   kilosale_db:
-    image: postgres
+    image: postgres:15
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -23,6 +23,15 @@ services:
       - .env
     depends_on:
       - kilosale_db
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "${PORT_ADMINER}:8080"
+    depends_on:
+      - kilosale_db
+    
   
   # kilosale_kyc_service:
   #   context: .

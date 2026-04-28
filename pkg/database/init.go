@@ -10,6 +10,7 @@ import (
 
 func DatabaseInit(host string, port string, user string, password string, dbname string) *gorm.DB {
 
+	fmt.Printf("Connecting to database with host=%s, port=%s, user=%s, dbname=%s\n", host, port, user, dbname)
 	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 

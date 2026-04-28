@@ -1,6 +1,8 @@
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/gechderib/kilosale/pkg v0.1.0 h1:KBp9viaNfhbgwBfe/f2/9zjqe9X8kj5mEwvuQsuLM5w=
 github.com/gechderib/kilosale/pkg v0.1.0/go.mod h1:P0yzNCjFIDPZxS8O9DXKNozVCVJNBK0UyMFaOcmccTk=
+github.com/gechderib/kilosale/pkg v0.2.0 h1:fe67i/Xs4YVsQdm8kRU/7BYwDqv2f8uwQ7OVlTK+Z1I=
+github.com/gechderib/kilosale/pkg v0.2.0/go.mod h1:fa2HLK44tgrswsdlXFF78I4RB5/PEIUnZAgMcrZRAVw=
 github.com/go-chi/chi/v5 v5.2.5 h1:Eg4myHZBjyvJmAFjFvWgrqDTXFyOzjj7YIm3L3mu6Ug=
 github.com/go-chi/chi/v5 v5.2.5/go.mod h1:X7Gx4mteadT3eDOMTsXzmI4/rwUpOwBHLpAfupzFJP0=
 github.com/jackc/pgpassfile v1.0.0 h1:/6Hmqy13Ss2zCq62VdNG8tM1wchn8zjSGOBJ6icpsIM=
