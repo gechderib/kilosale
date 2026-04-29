@@ -12,6 +12,10 @@ type Response struct {
 	Errors  interface{} `json:"errors,omitempty"`
 }
 
+func JSONDecoder(r *http.Request, dst interface{}) error {
+	return json.NewDecoder(r.Body).Decode(dst)
+}
+
 func JSON(w http.ResponseWriter, status int, success bool, message string, data interface{}, errors interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
